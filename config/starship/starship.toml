@@ -1,0 +1,73 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = '''$username
+$directory $git_branch$git_commit $git_status
+$character
+'''
+
+right_format = '''
+$time
+'''
+
+scan_timeout = 30
+
+palette = 'colors'
+
+[palettes.colors]
+
+red = '#ff8785'
+blue = '#a7e8f6'
+green = '#a1ff7b'
+yellow = '#f0c56b'
+
+[username]
+style_root = 'bold red'
+style_user = 'bold blue'
+format = '[  $user]($style)'
+show_always = true
+disabled = false
+
+[directory]
+style = 'bold red'
+truncation_length = 100
+truncate_to_repo = false
+format = '[  $path]($style)'
+disabled = false
+
+[git_commit]
+commit_hash_length = 6
+format = '[  $hash$tag]($style)'
+style = 'bold yellow'
+only_detached = false
+disabled = false
+
+[git_branch]
+always_show_remote = true
+format = "\n[ $symbol $branch(:$remote_branch)]($style)"
+style = 'bold blue'
+symbol = ''
+disabled = false
+
+[git_status]
+format = '\[$untracked$modified$staged$renamed$deleted$ahead_behind$stashed$conflicted\]'
+untracked = '[U:$count](bold white)'
+modified = '[ M:$count ](bold green)'
+staged = '[ S:$count ](bold yellow)'
+renamed = '[ R:$count ](bold blue)'
+deleted = '[ D:$count ](bold red)'
+conflicted = '[ C:$count ](bold red)'
+ahead = ' | [A:$count ](bold green)'
+behind = '[ B:$count ](bold blue)'
+stashed = '[ S:$count ](bold yellow)'
+disabled = false
+
+[character]
+success_symbol = '[ ](bold green)'
+
+[time]
+format = '[$time]($style)'
+style = 'bold green'
+use_12hr = true
+disabled = false
