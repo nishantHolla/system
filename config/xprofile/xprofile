@@ -1,0 +1,18 @@
+
+# applications
+
+export EDITOR="nvim"
+export TERMINAL="contour"
+export BROWSER="firefox"
+export FILE_MANAGER="pcmanfm"
+
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+# zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
+# starship
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
