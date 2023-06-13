@@ -22,7 +22,7 @@ set cleaner ~/.config/lf/cleaner
 
 # trash-cli
 
-cmd trash %trash-put $fx
+cmd trash %trash-put "$fx"
 map Dt trash
 
 # open
