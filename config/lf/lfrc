@@ -30,6 +30,7 @@ map Dt trash
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
 		text/*) lf -remote "send $id \$$EDITOR \$fx";;
+		inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
 		     *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
 	esac
 }}
@@ -37,7 +38,7 @@ cmd open &{{
 cmd open-with-gui &$@ $fx
 cmd open-with-cli $$@ $fx
 map O push :open-with-gui<space>
-map o push :open-with-cli<space> 
+map o push :open-with-cli<space>
 
 # execute
 
@@ -105,7 +106,7 @@ cmd new ${{
 	else
 		mkdir -p "$1"
 	fi
-    
+
 }}
 
 map n push :new<space>
@@ -150,6 +151,8 @@ cmd fzf ${{
 
 }}
 
+map <c-f> fzf
+
 # yank paths
 
 cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
@@ -181,5 +184,12 @@ map cd yank-dirname
 map cp yank-path
 map cb yank-basename
 
-map <c-f> fzf
+# quit
 
+cmd quit ${{
+	~/.config/lf/cleaner
+	lf --remote "send $id quit"
+
+}}
+
+map q quit

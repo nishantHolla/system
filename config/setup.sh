@@ -37,6 +37,8 @@ link picom "$CONFIG_DIR/picom"
 link rofi "$CONFIG_DIR/rofi"
 link starship "$CONFIG_DIR/starship"
 link xprofile/xprofile "$HOME/.xprofile"
+link zathura "$CONFIG_DIR/zathura"
 link zsh "$CONFIG_DIR/zsh"
 
 pull git@github.com:nishantHolla/awesomeConfig.git "$CONFIG_DIR/awesome"
+pull git@github.com:nishantHolla/neovimConfig.git "$CONFIG_DIR/nvim"
