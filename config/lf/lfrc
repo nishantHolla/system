@@ -193,3 +193,8 @@ cmd quit ${{
 }}
 
 map q quit
+map <esc> &{{
+	lf --remote "send $id clear"
+	lf --remote "send $id unselect"
+
+}}
