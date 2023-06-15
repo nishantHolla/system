@@ -1,6 +1,8 @@
 
 #!/bin/bash
 
+SETUP_DIR=`pwd`
+
 link() {
 	if [[ (-d $2) || (-f $2) ]] ; then
 		echo "Collision detected. $2 already exists. Skipping ..."
@@ -30,6 +32,7 @@ else
 	CONFIG_DIR="$XDG_CONFIG_HOME"
 fi
 
+cd ../config/
 link contour "$CONFIG_DIR/contour"
 link lf "$CONFIG_DIR/lf"
 link pcmanfm "$CONFIG_DIR/pcmanfm"
@@ -42,3 +45,14 @@ link zsh "$CONFIG_DIR/zsh"
 
 pull git@github.com:nishantHolla/awesomeConfig.git "$CONFIG_DIR/awesome"
 pull git@github.com:nishantHolla/neovimConfig.git "$CONFIG_DIR/nvim"
+cd $SETUP_DIR
+
+cd $HOME
+pull git@github.com:nishantHolla/icons.git "$HOME/Icons"
+mkdir -p $HOME/.local/share/icons
+link Icons "$HOME/.local/share/icons/GI"
+
+pull git@github.com:nishantHolla/fonts.git "$HOME/Fonts"
+link Fonts "$HOME/.local/share/fonts"
+
+pull git@github.com:nishantHolla/wallpapers.git "$HOME/Wallpapers"

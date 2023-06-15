@@ -16,7 +16,7 @@ prompt,entry {
 }
 
 element.selected.normal {
-	background-color: rgba(242, 7, 70, 70%);
+	background-color: rgba(242, 7, 70, 100%);
 }
 
 element-icon {
@@ -27,4 +27,3 @@ element-icon {
 element-text {
 	margin: 25px;
 }
-

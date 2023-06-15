@@ -1,5 +1,6 @@
 # setting
 
+set shell zsh
 set drawbox
 set incsearch
 set scrolloff 10
@@ -99,9 +100,9 @@ map a push :archive<space>
 
 cmd new ${{
 
-	isDir=$(echo "$1" | grep "/")
+	isDir=$(echo "$1" | grep -c "/")
 
-	if [[ -z "$isDir" ]] ; then
+	if [[ "$isDir" == "0" ]] ; then
 		touch "$1"
 	else
 		mkdir -p "$1"
@@ -141,7 +142,7 @@ map gL follow_link
 # fzf
 
 cmd fzf ${{
-	selection="$(fd -H . $HOME | neoFzf)"
+	selection="$(fd -H --exclude 'calibre' --exclude '.cache' --exclude '.git' --exclude '.npm' --exclude '.gnupg' --exclude 'Trash' --exclude '.mozilla' . $HOME | neoFzf)"
 
 	if [[ -d "$selection" ]] ; then
 		lf -remote "send $id cd $selection"
