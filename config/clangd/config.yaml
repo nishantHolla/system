@@ -1,0 +1,10 @@
+CompileFlags:
+  Add:
+    - "Wall"
+---
+
+If:
+  PathExclude: [.*\.c, .*\.h]
+CompileFlags:
+  Add:
+    - "-std=c++17"
