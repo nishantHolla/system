@@ -1,6 +1,5 @@
 # setting
 
-set shell zsh
 set drawbox
 set incsearch
 set scrolloff 10
@@ -21,9 +20,33 @@ set icons
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 
-# trash-cli
+# remove
+cmd remove ${{
+	echo "Trash following files?"
+	echo " "
+	echo "$fx"
+	echo "y/n :"
+	read confirm
+	if [[ "$confirm" == "y" ]] ; then
+		rm -rf $fx
+	fi
+}}
 
-cmd trash %trash-put "$fx"
+map Dx remove
+
+
+# trash
+cmd trash ${{
+	echo "Trash following files?"
+	echo " "
+	echo "$fx"
+	echo "y/n :"
+	read confirm
+	if [[ "$confirm" == "y" ]] ; then
+		trash-put $fx
+	fi
+}}
+
 map Dt trash
 
 # open
