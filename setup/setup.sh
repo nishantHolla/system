@@ -33,6 +33,7 @@ else
 fi
 
 cd ../config/
+link clangd "$CONFIG_DIR/clangd"
 link contour "$CONFIG_DIR/contour"
 link lf "$CONFIG_DIR/lf"
 link pcmanfm "$CONFIG_DIR/pcmanfm"
