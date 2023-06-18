@@ -1,12 +1,6 @@
 # system
 Configuration files of my linux system
 
-## sis
-
-sis (system interface service) is a collection of C++ libraries that provide convenient calls to
-functions that perform some small but essential system related tasks, saving the need to rewrite
-them again for every application.
-
 ## config
 
 Configuration files for some linux applications.
