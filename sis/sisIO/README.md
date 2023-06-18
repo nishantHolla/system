@@ -5,7 +5,7 @@ Arguments
 
 - const String& **\_logPath** : path of file to log. Can be empty string if not logging anyting.
 
-## mType
+## SisIO::mType
 
 Enum of type of messages recognized by the library.
 
@@ -15,7 +15,7 @@ Enum of type of messages recognized by the library.
 - **mTypeWarn** : the message is a warning to the user
 - **mTypeError** : the message reports an error
 
-## output
+## SisIO::output
 
 Output text to the console
 
@@ -30,7 +30,7 @@ Output text to the console
 
 None
 
-### input
+### SisIO::input
 
 Template function to get input from the user
 
@@ -45,7 +45,7 @@ Template function to get input from the user
 
 - type **T**
 
-## log
+## SisIO::log
 
 Log information to a file
 
