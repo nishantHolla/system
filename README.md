@@ -1,7 +1,7 @@
 # system
 Configuration files of my linux system
 
-# installation
+# Installation
 
 - Clone this repository.
 
