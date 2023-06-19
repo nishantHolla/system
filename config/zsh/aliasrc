@@ -1,4 +1,6 @@
 
 alias ls='ls -lh --color=auto'
 alias lf='lfcd'
-alias fzf='fzf --bind=alt-j:down,alt-k:up,alt-l:accept,alt-h:cancel'
+alias fzf='neoFzf'
+alias trm='trash-put'
+alias tls='trash-list'
