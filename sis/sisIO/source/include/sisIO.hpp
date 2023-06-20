@@ -37,6 +37,16 @@ public:
 	bool tagMessages;
 
 	int output(messageType _messageType, const std::string& _message, bool _endline=true);
+	std::string inputLine(const std::string& _message);
+
+	template<typename T>
+		T input(const std::string& _message) {
+			output(messageTypePrompt, _message, false);
+			T result;
+			std::cin >> result;
+			return result;
+		}
+
 
 	~SisIO();
 

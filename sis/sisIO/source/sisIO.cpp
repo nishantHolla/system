@@ -51,4 +51,12 @@ int SisIO::output(messageType _messageType, const std::string& _message, bool _e
 	return 0;
 }
 
+std::string SisIO::inputLine(const std::string& _message) {
+	output(messageTypePrompt, _message, false);
+	std::cin >> std::ws;
+	std::string result;
+	std::getline(std::cin, result);
+	return result;
+}
+
 SisIO::~SisIO() {};
