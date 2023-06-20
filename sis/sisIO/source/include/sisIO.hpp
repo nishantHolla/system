@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include <fstream>
 
 
 class SisIO {
@@ -38,6 +39,7 @@ public:
 
 	int output(messageType _messageType, const std::string& _message, bool _endline=true);
 	std::string inputLine(const std::string& _message);
+	int log(messageType _messageType, const std::string& _message, const std::string _sender);
 
 	template<typename T>
 		T input(const std::string& _message) {

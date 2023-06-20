@@ -59,4 +59,20 @@ std::string SisIO::inputLine(const std::string& _message) {
 	return result;
 }
 
+
+int SisIO::log(messageType _messageType, const std::string& _message, const std::string _sender) {
+
+	std::fstream logFile (logFilePath, std::ios::app);
+	if (logFile.good() == false)
+		return 1;
+
+	logFile <<
+		"\nFrom: " << _sender <<
+		"\nType: " << messageTypeToTag[_messageType] <<
+		"\nMessage: " << _message << "\n";
+
+	logFile.close();
+	return 0;
+}
+
 SisIO::~SisIO() {};
