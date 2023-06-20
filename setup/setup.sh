@@ -36,7 +36,6 @@ cd ../config/
 link clangd "$CONFIG_DIR/clangd"
 link contour "$CONFIG_DIR/contour"
 link lf "$CONFIG_DIR/lf"
-link pcmanfm "$CONFIG_DIR/pcmanfm"
 link picom "$CONFIG_DIR/picom"
 link rofi "$CONFIG_DIR/rofi"
 link starship "$CONFIG_DIR/starship"
