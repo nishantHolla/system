@@ -14,7 +14,7 @@ SisAuth::SisAuth() {
 }
 
 
-std::string SisAuth::generateHash(std::string _password, unsigned int _length) {
+std::string SisAuth::generateHash(const std::string& _password, unsigned int _length) {
 
 	if (hasArgon2 == false)
 		return "";
@@ -26,12 +26,21 @@ std::string SisAuth::generateHash(std::string _password, unsigned int _length) {
 
 	std::string hash;
 	char c;
-	while ((c=fgetc(process)) != EOF)
+	while ((c=fgetc(process)) != '\n')
 		hash += c;
 
 	pclose(process);
 
 	return hash;
+}
+
+bool SisAuth::checkHash(const std::string& _password, const std::string& _hash, unsigned int _length) {
+
+	std::string checkHash = generateHash(_password, _length);
+	if (checkHash == _hash)
+		return true;
+
+	return false;
 }
 
 
