@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.2)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
-project(sisIO)
+project(sisAuth)
 
 set(SOURCE_DIR "${PROJECT_SOURCE_DIR}/source")
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/source/include")
