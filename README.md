@@ -29,8 +29,6 @@ and hence can be used to hash and store passwords.
 <br><br>
 Argon2 package should be present in PATH in order to use this library.
 
-### sisAuth
-
 ## setup
 
 A setup script to link all config files and pull down other git repositories to the right locations.
