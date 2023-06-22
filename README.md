@@ -1,3 +1,6 @@
+<center>
+<img src="./assets/system.png" alt="system"></img>
+</center>
 
 # system
 Configuration files of my linux system
