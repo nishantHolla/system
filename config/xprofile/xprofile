@@ -16,3 +16,6 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # starship
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
+
+# path
+export PATH=$PATH:$HOME/Bin

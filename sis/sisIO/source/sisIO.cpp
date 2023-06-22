@@ -4,6 +4,7 @@
 SisIO::SisIO(std::string _logFilePath) :
 	logFilePath (_logFilePath),
 	logLevel (messageTypeNone),
+	outputLevel (messageTypeNone),
 	colorMessages (true),
 	tagMessages (true),
 	colorReset ("\u001b[0m")
@@ -34,6 +35,9 @@ SisIO::SisIO(std::string _logFilePath) :
 
 int SisIO::output(messageType _messageType, const std::string& _message, bool _endline) {
 
+	if (_messageType < outputLevel)
+		return 1;
+
 	if (colorMessages)
 		std::cout << colorToAnsiCode[messageTypeToColor[_messageType]];
 
@@ -62,9 +66,12 @@ std::string SisIO::inputLine(const std::string& _message) {
 
 int SisIO::log(messageType _messageType, const std::string& _message, const std::string _sender) {
 
+	if (_messageType < logLevel)
+		return 1;
+
 	std::fstream logFile (logFilePath, std::ios::app);
 	if (logFile.good() == false)
-		return 1;
+		return 2;
 
 	logFile <<
 		"\nFrom: " << _sender <<

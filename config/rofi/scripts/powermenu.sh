@@ -7,7 +7,7 @@ SLEEP_OPTION="sleep\0icon\x1fGI_powerSleepWhite\n"
 LOCK_OPTION="lock\0icon\x1fGI_powerLockWhite\n"
 LOGOUT_OPTION="logout\0icon\x1fGI_powerLogoutWhite\n"
 
-OPTIONS="$SHUTDOWN_OPTION$RESTART_OPTION$LOGOUT_OPTION$SLEEP_OPTION$LOCK_OPTION"
+OPTIONS="$LOCK_OPTION$SHUTDOWN_OPTION$RESTART_OPTION$LOGOUT_OPTION$SLEEP_OPTION"
 
 SELECTED=`echo -en "$OPTIONS" | rofi -dmenu -p "Powermenu: " -icon-theme GI`
 

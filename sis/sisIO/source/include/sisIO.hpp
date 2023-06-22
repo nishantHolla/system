@@ -33,7 +33,10 @@ public:
 	};
 
 	std::string logFilePath;
+
 	messageType logLevel;
+	messageType outputLevel;
+
 	bool colorMessages;
 	bool tagMessages;
 
