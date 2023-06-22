@@ -1,5 +1,5 @@
 <center>
-<img src="./assets/system.png" alt="system"></img>
+<img src="./assets/systemImage.png" alt="system"></img>
 </center>
 
 # system
