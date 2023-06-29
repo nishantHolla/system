@@ -355,7 +355,7 @@ profiles:
             # - rectangle     just the outline of a block
             # - underscore    a line under the text
             # - bar:          the well known i-Beam
-            shape: "bar"
+            shape: "block"
             # Determines whether or not the cursor will be blinking over time.
             blinking: false
             # Blinking interval (in milliseconds) to use when cursor is blinking.
@@ -450,7 +450,7 @@ color_schemes:
             # Specifies the color to be used for the actual cursor shape.
             #
             # Default: CellForeground
-            default: CellForeground
+            default: '#69eb36'
             # Specifies the color to be used for the characters that would
             # be covered otherwise.
             #
