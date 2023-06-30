@@ -35,6 +35,7 @@ fi
 cd ../config/
 link clangd "$CONFIG_DIR/clangd"
 link contour "$CONFIG_DIR/contour"
+link git "$CONFIG_DIR/git"
 link lf "$CONFIG_DIR/lf"
 link picom "$CONFIG_DIR/picom"
 link rofi "$CONFIG_DIR/rofi"
