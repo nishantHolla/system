@@ -3,3 +3,4 @@ build/
 output/
 .clangd
 test/
+config/tmux/plugins/
