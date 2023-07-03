@@ -16,3 +16,4 @@ lfcd () {
     fi
 }
 ```
+- [lfimg](https://github.com/thimc/lfimg) for preview support

@@ -1,6 +1,6 @@
 
 tags
 build
-output
 test
 .clangd
+Session.vim

@@ -45,6 +45,18 @@ bindkey '^e' edit-command-line
 
 eval "$(starship init zsh)"
 
+# tmux
+function _tmux()
+{
+    if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
+        command tmux attach \; choose-tree -Zs
+    else
+        command tmux "$@"
+    fi
+}
+
+alias tmux=_tmux
+
 # plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
