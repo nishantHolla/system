@@ -5,6 +5,9 @@ export EDITOR="nvim"
 export TERMINAL="contour"
 export BROWSER="firefox"
 export FILE_MANAGER="pcmanfm"
+export PDF_VIEWER="zathura"
+export IMAGE_VIEWER="vimiv"
+export VIDEO_VIEWER="mpv"
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
@@ -22,3 +25,7 @@ export PATH=$PATH:$HOME/Bin
 
 # git
 export GIT_CONFIG_GLOBAL=$HOME/.config/git/.gitconfig
+
+# CC
+export CC="/usr/bin/clang"
+export CXX="/usr/bin/clang++"

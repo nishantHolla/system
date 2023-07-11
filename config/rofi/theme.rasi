@@ -21,9 +21,9 @@ element.selected.normal {
 
 element-icon {
 	size: 40;
-	margin: 20px;
+	margin: 10px;
 }
 
 element-text {
-	margin: 25px;
+	margin: 15px;
 }

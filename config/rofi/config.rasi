@@ -1,6 +1,6 @@
 configuration {
 	modes: "window,drun,run,ssh";
-	font: "Quicksand 16";
+	font: "SometypeMono NFM 16";
 	show-icons: true;
 	case-sensitive: false;
 	cycle: true;
@@ -87,5 +87,3 @@ configuration {
 
 
 @theme "/home/nishant/.config/rofi/theme.rasi"
-
-

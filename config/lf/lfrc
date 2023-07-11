@@ -4,6 +4,7 @@ set drawbox
 set incsearch
 set scrolloff 10
 set wrapscroll
+set period 1
 map Z set hidden!
 
 # move to sibling directory
@@ -43,7 +44,7 @@ cmd trash ${{
 	echo "y/n :"
 	read confirm
 	if [[ "$confirm" == "y" ]] ; then
-		trash-put $fx
+		trash-put "$fx"
 	fi
 }}
 
@@ -69,6 +70,14 @@ map o push :open-with-cli<space>
 map x $$f
 map X !$f
 
+# duplicate file
+
+cmd duplicateFile ${{
+	cp $fx "${fx}_copy"
+}}
+
+map Y duplicateFile
+
 # paste
 
 cmd paste %{{
@@ -87,16 +96,29 @@ cmd paste %{{
 
 cmd extract ${{
 	set -f
+	echo "Extract to: "
+	read target
 	case $f in
-		*.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
-		*.tar.gz|*.tgz) tar xzvf $f;;
-		*.tar.xz|*.txz) tar xJvf $f;;
-		*.zip) unzip $f;;
-		*.rar) unrar x $f;;
-		*.7z) 7z x $f;;
+		*.tar.bz|*.tar.bz2|*.tbz|*.tbz2)
+			mkdir $target && tar xjvf $f -C $target;;
+		*.tar.gz|*.tgz)
+			mkdir $target && tar xzvf $f -C $target;;
+		*.tar.xz|*.txz)
+			mkdir $target && tar xJvf $f -C $target;;
+		*.7z|*.zip)
+			7z x $f -o"$target";;
 	esac
 }}
 map e extract
+
+# wallpaper
+
+cmd setWallpaper ${{
+	set -f
+	awesome-client "AwesomeWM.theme.replaceWallpaper(nil, '$fx')"
+}}
+
+map W setWallpaper
 
 # archive
 
@@ -115,7 +137,7 @@ cmd archive ${{
 		rm -rf $1
 	fi
 	lf -remote "send unselect"
-	
+
 }}
 map a push :archive<space>
 
@@ -165,7 +187,7 @@ map gL follow_link
 # fzf
 
 cmd fzf ${{
-	selection="$(fd -H --exclude 'calibre' --exclude '.cache' --exclude '.git' --exclude '.npm' --exclude '.gnupg' --exclude 'Trash' --exclude '.mozilla' . $HOME | neoFzf)"
+	selection="$(fd -H . $HOME | neoFzf)"
 
 	if [[ -d "$selection" ]] ; then
 		lf -remote "send $id cd $selection"

@@ -7,7 +7,7 @@ NO_OPTION="no\0icon\x1fGI_confirmNoWhite\n"
 OPTIONS="$YES_OPTION$NO_OPTION"
 
 
-SELECTION=`echo -en $OPTIONS | rofi -dmenu -p "Are you sure? : " -icon-theme GI`
+SELECTION=`echo -en $OPTIONS | rofi -dmenu -i -p "Are you sure? : " -icon-theme GI`
 
 echo "$SELECTION"
 if [[ $SELECTION == "yes" ]] ; then

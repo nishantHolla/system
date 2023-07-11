@@ -9,7 +9,7 @@ LOGOUT_OPTION="logout\0icon\x1fGI_powerLogoutWhite\n"
 
 OPTIONS="$LOCK_OPTION$SHUTDOWN_OPTION$RESTART_OPTION$LOGOUT_OPTION$SLEEP_OPTION"
 
-SELECTED=`echo -en "$OPTIONS" | rofi -dmenu -p "Powermenu: " -icon-theme GI`
+SELECTED=`echo -en "$OPTIONS" | rofi -dmenu -i -p "Powermenu: " -icon-theme GI`
 
 if [[ -z "$SELECTED" ]] ; then
 	exit 1
@@ -22,7 +22,7 @@ fi
 
 case "$SELECTED" in
 
-	"shutdown") shutdown now;;
+	"shutdown") awesomewm-client "AwesomeWM.functions.shutdown()";;
 	"restart") reboot;;
 	"logout") kill -9 -1;;
 	"sleep") systemctl suspend;;
