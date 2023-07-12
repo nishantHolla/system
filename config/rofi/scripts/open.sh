@@ -51,7 +51,7 @@ openDirectory() {
 	COLLECTED_FILES=`fd -H -t d . $HOME | sort | sed 's/$/\\\0icon\\\x1fGI_fileDirectoryWhite/'`
 	SELECTED_FILE=`echo -en "$COLLECTED_FILES" | rofi -dmenu -i -p "Open directory: " -icon-theme GI`
 	if [[ -d "$SELECTED_FILE" ]]; then
-		$FILE_MANAGER $SELECTED_FILE
+		contour lfcd $SELECTED_FILE
 	else
 		exit 2
 	fi

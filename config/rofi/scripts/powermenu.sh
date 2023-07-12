@@ -22,7 +22,7 @@ fi
 
 case "$SELECTED" in
 
-	"shutdown") awesomewm-client "AwesomeWM.functions.shutdown()";;
+	"shutdown") awesome-client "AwesomeWM.functions.shutdown()";;
 	"restart") reboot;;
 	"logout") kill -9 -1;;
 	"sleep") systemctl suspend;;
