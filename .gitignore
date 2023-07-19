@@ -4,3 +4,4 @@ output/
 .clangd
 test/
 config/tmux/plugins/
+notes.md

@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 void SisPower::shutdown() {
-	std::system("awesomewm-client \"AwesomeWM.functions.shutdown()\"");
+	std::system("awesome-client \"AwesomeWM.functions.shutdown()\"");
 }
 
 void SisPower::restart() {
