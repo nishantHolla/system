@@ -6,6 +6,8 @@ set scrolloff 10
 set wrapscroll
 set period 1
 map Z set hidden!
+set ruler 'acc:progress:selection:filter:ind'
+set dircounts
 
 # move to sibling directory
 
@@ -29,7 +31,7 @@ cmd remove ${{
 	echo "y/n :"
 	read confirm
 	if [[ "$confirm" == "y" ]] ; then
-		rm -rf $fx
+		echo "$fx" | while IFS= read -r line ; do rm -rf "$line"; done
 	fi
 }}
 
@@ -44,7 +46,7 @@ cmd trash ${{
 	echo "y/n :"
 	read confirm
 	if [[ "$confirm" == "y" ]] ; then
-		trash-put "$fx"
+		echo "$fx" | while IFS= read -r line ; do trash-put "$line"; done
 	fi
 }}
 
@@ -54,9 +56,9 @@ map Dt trash
 
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
-		text/*) lf -remote "send $id \$$EDITOR \$fx";;
-		inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
-		     *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+		text/*) lf -remote "send $id \$$EDITOR \"\$fx\"";;
+		inode/x-empty) lf -remote "send $id \$$EDITOR \"\$fx\"";;
+		     *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
 	esac
 }}
 
@@ -170,11 +172,13 @@ map r rename
 
 # select
 
-map <space> toggle
+map f
+map f<space> :toggle
+map fa :glob-select *
+map fA :glob-unselect *
+map ff push :glob-select<space>**<left>
 
-# find
-
-map f push /
+map <space>
 
 # follow symlinks
 
