@@ -14,22 +14,22 @@ public:
 
 	SisIO(std::string _logFilePath);
 
-	enum messageType {
-		messageTypePrompt,
-		messageTypeNone,
-		messageTypeOkay,
-		messageTypeInfo,
-		messageTypeWarn,
-		messageTypeError
+	enum class messageType {
+		prompt,
+		none,
+		okay,
+		info,
+		warn,
+		error
 	};
 
-	enum color {
-		colorWhite,
-		colorGreen,
-		colorCyan,
-		colorYellow,
-		colorRed,
-		colorBlue
+	enum class messageColor {
+		white,
+		green,
+		cyan,
+		yellow,
+		red,
+		blue
 	};
 
 	std::string logFilePath;
@@ -46,7 +46,7 @@ public:
 
 	template<typename T>
 		T input(const std::string& _message) {
-			output(messageTypePrompt, _message, false);
+			output(messageType::prompt, _message, false);
 			T result;
 			std::cin >> result;
 			return result;
@@ -57,9 +57,9 @@ public:
 
 private:
 
-	std::unordered_map<messageType, color> messageTypeToColor;
+	std::unordered_map<messageType, messageColor> messageTypeToColor;
 	std::unordered_map<messageType, std::string> messageTypeToTag;
-	std::unordered_map<color, std::string> colorToAnsiCode;
+	std::unordered_map<messageColor, std::string> colorToAnsiCode;
 
 	const std::string colorReset;
 

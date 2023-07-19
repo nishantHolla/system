@@ -3,33 +3,33 @@
 
 SisIO::SisIO(std::string _logFilePath) :
 	logFilePath (_logFilePath),
-	logLevel (messageTypeNone),
-	outputLevel (messageTypeNone),
+	logLevel (messageType::none),
+	outputLevel (messageType::none),
 	colorMessages (true),
 	tagMessages (true),
 	colorReset ("\u001b[0m")
 {
 
-	messageTypeToColor[messageTypePrompt] = colorBlue;
-	messageTypeToColor[messageTypeNone] = colorWhite;
-	messageTypeToColor[messageTypeOkay] = colorGreen;
-	messageTypeToColor[messageTypeInfo] = colorCyan;
-	messageTypeToColor[messageTypeWarn] = colorYellow;
-	messageTypeToColor[messageTypeError] = colorRed;
+	messageTypeToColor[messageType::prompt] = messageColor::blue;
+	messageTypeToColor[messageType::none] = messageColor::white;
+	messageTypeToColor[messageType::okay] = messageColor::green;
+	messageTypeToColor[messageType::info] = messageColor::cyan;
+	messageTypeToColor[messageType::warn] = messageColor::yellow;
+	messageTypeToColor[messageType::error] = messageColor::red;
 
-	messageTypeToTag[messageTypePrompt] = " [INPT] ";
-	messageTypeToTag[messageTypeNone] = "  ";
-	messageTypeToTag[messageTypeOkay] = " [OKAY] ";
-	messageTypeToTag[messageTypeInfo] = " [INFO] ";
-	messageTypeToTag[messageTypeWarn] = " [WARN] ";
-	messageTypeToTag[messageTypeError] = " [ERRR] ";
+	messageTypeToTag[messageType::prompt] = " [INPT] ";
+	messageTypeToTag[messageType::none] = "  ";
+	messageTypeToTag[messageType::okay] = " [OKAY] ";
+	messageTypeToTag[messageType::info] = " [INFO] ";
+	messageTypeToTag[messageType::warn] = " [WARN] ";
+	messageTypeToTag[messageType::error] = " [ERRR] ";
 
-	colorToAnsiCode[colorBlue] = "\u001b[34;1m";
-	colorToAnsiCode[colorWhite] = "\u001b[37;1m";
-	colorToAnsiCode[colorGreen] = "\u001b[32;1m";
-	colorToAnsiCode[colorCyan] = "\u001b[36;1m";
-	colorToAnsiCode[colorYellow] = "\u001b[33;1m";
-	colorToAnsiCode[colorRed] = "\u001b[31;1m";
+	colorToAnsiCode[messageColor::blue] = "\u001b[34;1m";
+	colorToAnsiCode[messageColor::white] = "\u001b[37;1m";
+	colorToAnsiCode[messageColor::green] = "\u001b[32;1m";
+	colorToAnsiCode[messageColor::cyan] = "\u001b[36;1m";
+	colorToAnsiCode[messageColor::yellow] = "\u001b[33;1m";
+	colorToAnsiCode[messageColor::red] = "\u001b[31;1m";
 
 }
 
@@ -56,7 +56,7 @@ int SisIO::output(messageType _messageType, const std::string& _message, bool _e
 }
 
 std::string SisIO::inputLine(const std::string& _message) {
-	output(messageTypePrompt, _message, false);
+	output(messageType::prompt, _message, false);
 	std::cin >> std::ws;
 	std::string result;
 	std::getline(std::cin, result);
