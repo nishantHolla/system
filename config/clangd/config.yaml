@@ -5,7 +5,7 @@ CompileFlags:
 ---
 
 If:
-  PathInclude: [.*\.cpp, .*\.hpp]
+  PathMatch: [.*\.cpp, .*\.hpp]
 CompileFlags:
   Add:
     - "-std=c++17"

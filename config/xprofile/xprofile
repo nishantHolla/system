@@ -2,7 +2,7 @@
 # applications
 
 export EDITOR="nvim"
-export TERMINAL="contour"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE_MANAGER="pcmanfm"
 export PDF_VIEWER="zathura"

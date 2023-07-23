@@ -17,10 +17,10 @@ palette = 'colors'
 
 [palettes.colors]
 
-red = '#ff8785'
-blue = '#a7e8f6'
-green = '#a1ff7b'
-yellow = '#f0c56b'
+red = '#F0504f'
+blue = '#846ff7'
+green = '#70e0bb'
+yellow = '#f7f36f'
 
 [username]
 style_root = 'bold red'
@@ -65,9 +65,11 @@ disabled = false
 
 [character]
 success_symbol = '[ ](bold green)'
+vimcmd_symbol = '[ ](bold green)'
+error_symbol = '[ ](bold red)'
 
 [time]
 format = '[$time]($style)'
-style = 'bold green'
+style = 'bold yellow'
 use_12hr = true
 disabled = false
