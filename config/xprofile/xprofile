@@ -1,4 +1,9 @@
 
+# user
+
+export EMAIL_ID="nishantholla19@gmail.com"
+export GITHUB_NAME="nishantHolla"
+
 # applications
 
 export EDITOR="nvim"
@@ -10,22 +15,32 @@ export IMAGE_VIEWER="vimiv"
 export VIDEO_VIEWER="mpv"
 
 # XDG Paths
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
 # zsh
+
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # starship
+
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 # path
+
 export PATH=$PATH:$HOME/Bin
 
 # git
+
 export GIT_CONFIG_GLOBAL=$HOME/.config/git/.gitconfig
 
-# CC
+# C lang
+
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
+
+# secrets
+
+source ~/.xprofile_secrets
