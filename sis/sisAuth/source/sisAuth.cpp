@@ -20,7 +20,7 @@ std::string SisAuth::generateHash(const std::string& _password, unsigned int _le
 		return "";
 
 	std::string command = "echo \"" + _password + "\" | argon2 saltItWithSalt -r -l " + std::to_string(_length);
-	FILE* process = popen(command.c_str(), "r");
+	FILE *process = popen(command.c_str(), "r");
 	if (process == nullptr)
 		return "";
 

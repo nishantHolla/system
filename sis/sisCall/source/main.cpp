@@ -4,7 +4,7 @@
 
 #include "sisCall.hpp"
 
-std::string popArgs(int* argc, char** argv[]);
+std::string popArgs(int *argc, char **argv[]);
 
 int main (int argc, char *argv[]) {
 	if (argc < 3)
@@ -24,7 +24,7 @@ int main (int argc, char *argv[]) {
 	return 0;
 }
 
-std::string popArgs(int* argc, char** argv[]) {
+std::string popArgs(int *argc, char **argv[]) {
 	(*argc)--;
 	std::string arg = (*argv)[0];
 	(*argv)++;
