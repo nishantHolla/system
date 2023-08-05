@@ -1,14 +1,1 @@
-CompileFlags:
-  Add:
-    - "-Wall"
-
----
-
-If:
-  PathMatch: [.*\.cpp, .*\.hpp]
-CompileFlags:
-  Add:
-    - "-std=c++17"
-    - "-Wall"
-
----
+asdf

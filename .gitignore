@@ -5,3 +5,5 @@ output/
 test/
 config/tmux/plugins/
 notes.md
+nvim
+awesome

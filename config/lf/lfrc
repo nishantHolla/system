@@ -53,7 +53,6 @@ cmd trash ${{
 map Dt trash
 
 # open
-
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
 		text/*) lf -remote "send $id \$$EDITOR \"\$fx\"";;
@@ -239,7 +238,6 @@ map cb yank-basename
 cmd quit ${{
 	~/.config/lf/cleaner
 	lf --remote "send $id quit"
-
 }}
 
 map q quit
@@ -248,3 +246,10 @@ map <esc> &{{
 	lf --remote "send $id unselect"
 
 }}
+
+# remove spaces
+cmd removeSpaces ${{
+	removeSpaces .
+}}
+
+map b removeSpaces
