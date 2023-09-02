@@ -25,7 +25,7 @@ case "$SELECTED" in
 	"shutdown") awesome-client "AwesomeWM.functions.shutdown()";;
 	"restart") reboot;;
 	"logout") kill -9 -1;;
-	"sleep") systemctl suspend;;
+	"sleep") systemctl suspend && betterlockscreen -l;;
 	"lock") betterlockscreen -l;;
 	*) exit 3;
 
