@@ -1,5 +1,10 @@
 # setting
 
+set shell zsh
+set shellopts '-euy'
+set ifs "\n"
+set filesep "\n"  # default already
+
 set drawbox
 set incsearch
 set scrolloff 10
@@ -8,6 +13,7 @@ set period 1
 map Z set hidden!
 set ruler 'acc:progress:selection:filter:ind'
 set dircounts
+set info size:time
 
 # move to sibling directory
 
@@ -24,6 +30,7 @@ set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 
 # remove
+
 cmd remove ${{
 	echo "Trash following files?"
 	echo " "
@@ -39,6 +46,7 @@ map Dx remove
 
 
 # trash
+
 cmd trash ${{
 	echo "Trash following files?"
 	echo " "
@@ -53,24 +61,25 @@ cmd trash ${{
 map Dt trash
 
 # open
-cmd open &{{
-	case $(file --mime-type -Lb $f) in
-		text/*) lf -remote "send $id \$$EDITOR \"\$fx\"";;
-		inode/x-empty) lf -remote "send $id \$$EDITOR \"\$fx\"";;
-		application/json) lf -remote "send $id \$$EDITOR \"\$fx\"";;
-		     *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
-	esac
-}}
 
-cmd open-with-gui &$@ $fx
-cmd open-with-cli $$@ $fx
+# cmd open &{{
+# 	case $(file --mime-type -Lb $f) in
+# 		text/*) lf -remote "send $id \$$EDITOR "$fx"";;
+# 		inode/x-empty) lf -remote "send $id \$$EDITOR \"\$fx\"";;
+# 		application/json) lf -remote "send $id \$$EDITOR \"\$fx\"";;
+# 		     *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
+# 	esac
+# }}
+
+cmd open $set -f; rifle -p 0 $fx
+cmd open-with-gui &$@ "$fx"
+cmd open-with-cli $$@ "$fx"
 map O push :open-with-gui<space>
 map o push :open-with-cli<space>
 
 # execute
 
-map x $$f
-map X !$f
+map x "$fx"
 
 # duplicate file
 
@@ -147,13 +156,18 @@ map a push :archive<space>
 
 cmd new ${{
 
-	isDir=$(echo "$1" | grep -c "/")
-
-	if [[ "$isDir" == "0" ]] ; then
+	if [[ "$1" == */*\.* ]] ; then
+		p="$(dirname "$1")"
+		f="$(basename "$1")"
+		mkdir -p "$p"
 		touch "$1"
-	else
+	elif [[ "$1" == */* ]] ; then
 		mkdir -p "$1"
+	else
+		touch "$1"
 	fi
+
+	lf -remote "send select $1"
 
 }}
 
@@ -254,3 +268,15 @@ cmd removeSpaces ${{
 }}
 
 map b removeSpaces
+
+# preview
+
+cmd toggle_preview %{{
+    if [ "$lf_preview" = "true" ]; then
+        lf -remote "send $id :set preview false; set ratios 1:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 1:2:3"
+    fi
+}}
+
+map zp toggle_preview
