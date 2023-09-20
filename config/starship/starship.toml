@@ -4,6 +4,7 @@ add_newline = true
 
 format = '''$username
 $directory $git_branch$git_commit $git_status
+$python
 $character
 '''
 
@@ -72,4 +73,8 @@ error_symbol = '[ ](bold red)'
 format = '[$time]($style)'
 style = 'bold yellow'
 use_12hr = true
+disabled = false
+
+[python]
+format = ' [ Python ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) | '
 disabled = false
