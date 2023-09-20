@@ -7,7 +7,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 # user
 
-export EMAIL_ID="nishantholla19@gmail.com"
+export GMAIL_ID="nishantholla19@gmail.com"
 export GITHUB_NAME="nishantHolla"
 
 # applications
@@ -16,6 +16,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE_MANAGER="pcmanfm"
+export CLI_FILE_MANAGER="lf"
 export PDF_VIEWER="zathura"
 export IMAGE_VIEWER="vimiv"
 export VIDEO_VIEWER="mpv"
