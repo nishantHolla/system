@@ -62,16 +62,25 @@ map Dt trash
 
 # open
 
-# cmd open &{{
-# 	case $(file --mime-type -Lb $f) in
-# 		text/*) lf -remote "send $id \$$EDITOR "$fx"";;
-# 		inode/x-empty) lf -remote "send $id \$$EDITOR \"\$fx\"";;
-# 		application/json) lf -remote "send $id \$$EDITOR \"\$fx\"";;
-# 		     *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
-# 	esac
-# }}
+cmd open ${{
+	filename=$(basename -- "$fx")
+	extension="${filename##*.}"
 
-cmd open $set -f; rifle -p 0 $fx
+	case $extension in
+		jpg|jpeg|png|webp|gif) APP="$IMAGE_VIEWER";;
+		mp4|mpg) APP="$VIDEO_VIEWER";;
+		pdf) APP="$PDF_VIEWER";;
+		*) lf -remote "send $id \$$EDITOR "$fx""; exit 0;;
+	esac
+
+	lf -remote "send $id \$$APP "$fx" > /dev/null 2> /dev/null &"
+
+	# case $(file --mime-type -Lb $f) in
+	# 	text/*|application/javascript|inode/x-empty|application/json) lf -remote "send $id \$$EDITOR "$fx"";;
+	# 	 *) for f in $fx; do xdg-open "$f" > /dev/null 2> /dev/null & done;;
+	# esac
+}}
+
 cmd open-with-gui &$@ "$fx"
 cmd open-with-cli $$@ "$fx"
 map O push :open-with-gui<space>
@@ -191,6 +200,7 @@ map f<space> :toggle
 map fa :glob-select *
 map fA :glob-unselect *
 map ff push :glob-select<space>**<left>
+map fb invert-below
 
 map <space>
 
@@ -280,3 +290,9 @@ cmd toggle_preview %{{
 }}
 
 map zp toggle_preview
+
+# edit file
+
+map <a-l> &{{
+	lf -remote "send $id \$$EDITOR "$fx""
+}}
