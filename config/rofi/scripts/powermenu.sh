@@ -22,11 +22,11 @@ fi
 
 case "$SELECTED" in
 
-	"shutdown") awesome-client "AwesomeWM.functions.shutdown()";;
-	"restart") reboot;;
-	"logout") kill -9 -1;;
-	"sleep") systemctl suspend && betterlockscreen -l;;
-	"lock") betterlockscreen -l;;
+	"shutdown") awesome-client "AwesomeWM.functions.power.shutdown()";;
+	"restart") awesome-client "AwesomeWM.functions.power.reboot()";;
+	"logout") awesome-client "AwesomeWM.functions.power.logout()";;
+	"sleep") awesome-client "AwesomeWM.functions.power.sleep()";;
+	"lock") awesome-client "AwesomeWM.functions.power.lock()";;
 	*) exit 3;
 
 esac
