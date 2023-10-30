@@ -225,7 +225,7 @@ cmd fzf ${{
 
 }}
 
-map <a-f> fzf
+map gd fzf
 
 # ripgrep
 
@@ -239,7 +239,7 @@ cmd fzf_search ${{
     )"
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
-map <a-r> :fzf_search
+map go :fzf_search
 
 # fasd
 
