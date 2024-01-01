@@ -43,6 +43,13 @@ export GIT_CONFIG_GLOBAL=$HOME/.config/git/.gitconfig
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
 
+# android
+
+export ANDROID_HOME="$HOME/Applications/android/sdk"
+export PATH=$PATH:$ANDROID_HOME
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # sources
 
 source ~/.xprofile_secrets

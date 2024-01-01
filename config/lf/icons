@@ -1,4 +1,8 @@
 
+#custom
+*tailwind.config.ts    󱏿
+
+
 # default values from lf (with matching order)
 # ln      l       # LINK
 # or      l       # ORPHAN

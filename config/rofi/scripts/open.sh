@@ -100,13 +100,19 @@ case "$SELECTED" in
 		queryPdf
 		open $SELECTED_FILE;;
 
+	# "directories")
+	# 	queryDirectory
+	# 	open $SELECTED_FILE;;
+
 	"directories")
-		queryDirectory
-		open $SELECTED_FILE;;
+		$TERMINAL -e $CLI_FILE_MANAGER -command "fzf fd dir";;
+
+	# "all files")
+	# 	queryFile
+	# 	open $SELECTED_FILE;;
 
 	"all files")
-		queryFile
-		open $SELECTED_FILE;;
+		$TERMINAL -e $CLI_FILE_MANAGER -command "fzf fd file";;
 
 	*) exit 3;;
 esac

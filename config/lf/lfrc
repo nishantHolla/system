@@ -118,16 +118,7 @@ cmd extract ${{
 	set -f
 	echo "Extract to: "
 	read target
-	case $f in
-		*.tar.bz|*.tar.bz2|*.tbz|*.tbz2)
-			mkdir $target && tar xjvf $f -C $target;;
-		*.tar.gz|*.tgz)
-			mkdir $target && tar xzvf $f -C $target;;
-		*.tar.xz|*.txz)
-			mkdir $target && tar xJvf $f -C $target;;
-		*.7z|*.zip)
-			7z x $f -o"$target";;
-	esac
+	7z x $fx -o"$target"
 }}
 map e extract
 
@@ -212,51 +203,81 @@ cmd follow_link %{{
 
 map gL follow_link
 
-# fzf
+# fzf: file and directory navigation
 
 cmd fzf ${{
-	selection="$(fd -H . $HOME | neoFzf)"
+	if [[ $1 == "ripgrep" ]]
+	then
+		RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+		res="$(
+				FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+				fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+				--ansi --layout=reverse --header 'Search in files' \
+				| cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
+			  )"
+		[ -n "$res" ] && lf -remote "send $id select \"$res\""
+		return
+	
+	elif [[ $1 == "fasd" ]]
+	then
+		
+		if [ -z ${2+x} ]
+		then
+			res="$(fasd -l | grep -iv cache | neoFzf 2>/dev/tty)"
+		elif [[ $2 == "dir" ]]
+		then
+			res="$(fasd -ld | grep -iv cache | neoFzf 2>/dev/tty)"
+		elif [[ $2 == "file" ]]
+		then
+			res="$(fasd -lf | grep -iv cache | neoFzf 2>/dev/tty)"
+		fi
 
-	if [[ -d "$selection" ]] ; then
-		lf -remote "send $id cd $selection"
-	else
-		lf -remote "send $id select $selection"
+		if [ -n "$res" ]; then
+			if [ -d "$res" ]; then
+				cmd="cd"
+			else
+				cmd="select"
+			fi
+			res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+			lf -remote "send $id $cmd \"$res\""
+		fi
+
+	elif [[ $1 == "fd" ]]
+	then
+		if [ -z ${2+x} ]
+		then
+			selection="$(fd -H . $HOME | neoFzf)"
+
+		elif [[ $2 == "dir" ]]
+		then
+			selection="$(fd -H -t d . $HOME | neoFzf)"
+
+		elif [[ $2 == "file" ]]
+		then
+			selection="$(fd -H -t f . $HOME | neoFzf)"
+		fi
+
+		if [ -z ${selection+x} ]
+		then
+			return
+		elif [[ -d "$selection" ]] ; then
+			lf -remote "send $id cd $selection"
+		else
+			lf -remote "send $id select $selection"
+		fi
 	fi
 
 }}
 
-map gd fzf
+map gOs fzf ripgrep
 
-# ripgrep
+map gOO fzf fasd
+map gOD fzf fasd dir
+map gOF fzf fasd file
 
-cmd fzf_search ${{
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-    res="$(
-        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
-            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-            --ansi --layout=reverse --header 'Search in files' \
-            | cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
-    )"
-    [ -n "$res" ] && lf -remote "send $id select \"$res\""
-}}
-map go :fzf_search
-
-# fasd
-
-cmd fasd_dir ${{
-    res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty)"
-    if [ -n "$res" ]; then
-        if [ -d "$res" ]; then
-            cmd="cd"
-        else
-            cmd="select"
-        fi
-        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-        lf -remote "send $id $cmd \"$res\""
-    fi
-}}
-
-map go :fasd_dir
+map go fzf fd
+map gOd fzf fd dir
+map gOf fzf fd file
 
 # yank paths
 
