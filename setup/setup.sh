@@ -5,7 +5,7 @@ SETUP_DIR=`pwd`
 
 link() {
 	if [[ (-d $2) || (-f $2) ]] ; then
-		echo "Collision detected. $2 already exists. Skipping ..."
+		echo "Collision detected: $2 already exists. Skipping ..."
 		return
 	fi
 
@@ -17,7 +17,7 @@ link() {
 
 pull() {
 	if [[ (-d $2) || (-f $2) ]] ; then
-		echo "Collision detected. $2 already exists. Skipping ..."
+		echo "Collision detected: $2 already exists. Skipping ..."
 		return
 	fi
 
@@ -44,12 +44,18 @@ link starship "$CONFIG_DIR/starship"
 link xprofile/xprofile "$HOME/.xprofile"
 link zathura "$CONFIG_DIR/zathura"
 link zsh "$CONFIG_DIR/zsh"
+link fd "$CONFIG_DIR/fd"
+link lfimg "$CONFIG_DIR/lfimg"
+link vimiv "$CONFIG_DIR/vimiv"
+link flameshot "$CONFIG_DIR/flameshot"
+link pcmanfm "$CONFIG_DIR/pcmanfm"
 
-pull git@github.com:nishantHolla/awesomeConfig.git "$CONFIG_DIR/awesome"
-pull git@github.com:nishantHolla/neovimConfig.git "$CONFIG_DIR/nvim"
-cd $SETUP_DIR
+pull git@github.com:nishantHolla/awesomeConfig.git "../config/awesome"
+link awesome "$CONFIG_DIR/awesome"
 
-cd $HOME
+pull git@github.com:nishantHolla/nvimConfig.git "../config/nvim"
+link nvim "$CONFIG_DIR/nvim"
+
 pull git@github.com:nishantHolla/icons.git "$HOME/Icons"
 mkdir -p $HOME/.local/share/icons
 link Icons "$HOME/.local/share/icons/GI"
