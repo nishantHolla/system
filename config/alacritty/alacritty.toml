@@ -1,0 +1,19 @@
+[colors.normal]
+black = "#0d0d0d"
+blue = "#846ff7"
+green = "#70e0bb"
+red = "#F0504f"
+white = "#fdfdfd"
+yellow = "#f7f36f"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "SometypeMono NFM"
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+opacity = 0.9
