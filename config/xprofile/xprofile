@@ -38,6 +38,10 @@ export PATH=$PATH:$HOME/Bin
 
 export GIT_CONFIG_GLOBAL=$HOME/.config/git/.gitconfig
 
+# fzf
+
+export FZF_KEYBINDINGS="alt-j:down,alt-k:up,alt-l:accept,alt-h:cancel"
+
 # C lang
 
 export CC="/usr/bin/clang"
