@@ -243,17 +243,18 @@ cmd fzf ${{
 
 	elif [[ $1 == "fd" ]]
 	then
+		IGNORES=`cat $FD_IGNORE | sed ':a;N;$!ba;s/\n/ -E /g'`
 		if [ -z ${2+x} ]
 		then
-			selection="$(fd -H . $HOME | fzf --bind $FZF_KEYBINDINGS)"
+			selection="$(fd -HI . $HOME | fzf --bind $FZF_KEYBINDINGS)"
 
 		elif [[ $2 == "dir" ]]
 		then
-			selection="$(fd -H -t d . $HOME | fzf --bind $FZF_KEYBINDINGS)"
+			selection="$(fd -HI -t d . $HOME | fzf --bind $FZF_KEYBINDINGS)"
 
 		elif [[ $2 == "file" ]]
 		then
-			selection="$(fd -H -t f . $HOME | fzf --bind $FZF_KEYBINDINGS)"
+			selection="$(fd -HI -t f . $HOME | fzf --bind $FZF_KEYBINDINGS)"
 		fi
 
 		if [ -z ${selection+x} ]
