@@ -33,6 +33,7 @@ else
 fi
 
 cd ../config/
+link xprofile "$CONFIG_DIR/xprofile"
 link alacritty "$CONFIG_DIR/alacritty"
 link clangd "$CONFIG_DIR/clangd"
 link contour "$CONFIG_DIR/contour"
@@ -41,7 +42,6 @@ link lf "$CONFIG_DIR/lf"
 link picom "$CONFIG_DIR/picom"
 link rofi "$CONFIG_DIR/rofi"
 link starship "$CONFIG_DIR/starship"
-link xprofile/xprofile "$HOME/.xprofile"
 link zathura "$CONFIG_DIR/zathura"
 link zsh "$CONFIG_DIR/zsh"
 link fd "$CONFIG_DIR/fd"
@@ -49,6 +49,9 @@ link lfimg "$CONFIG_DIR/lfimg"
 link vimiv "$CONFIG_DIR/vimiv"
 link flameshot "$CONFIG_DIR/flameshot"
 link pcmanfm "$CONFIG_DIR/pcmanfm"
+ln -sf $CONFIG_DIR/zsh/zshrc $HOME/.zshrc
+ln -sf $CONFIG_DIR/xprofile/xprofile $HOME/.xprofile
+ln -sf $CONFIG_DIR/xprofile/xprofile_secrets $HOME/.xprofile_secrets
 
 pull git@github.com:nishantHolla/awesomeConfig.git "../config/awesome"
 link awesome "$CONFIG_DIR/awesome"
