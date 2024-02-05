@@ -35,7 +35,6 @@ fi
 cd ../config/
 link xprofile "$CONFIG_DIR/xprofile"
 link alacritty "$CONFIG_DIR/alacritty"
-link contour "$CONFIG_DIR/contour"
 link git "$CONFIG_DIR/git"
 link lf "$CONFIG_DIR/lf"
 link picom "$CONFIG_DIR/picom"
