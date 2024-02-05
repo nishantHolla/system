@@ -21,9 +21,9 @@ export PDF_VIEWER="zathura"
 export IMAGE_VIEWER="vimiv"
 export VIDEO_VIEWER="mpv"
 export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+export MANPAGER='nvim +Man!'
 
 # zsh
-
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # starship
@@ -47,13 +47,9 @@ export FZF_KEYBINDINGS="alt-j:down,alt-k:up,alt-l:accept,alt-h:cancel"
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
 
-# android
-
-export ANDROID_HOME="$HOME/Applications/android/sdk"
-export PATH=$PATH:$ANDROID_HOME
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# fd
+export FD_IGNORE="$HOME/.config/fd/ignore"
 
 # sources
 
-source ~/.xprofile_secrets
+source $HOME/.xprofile_secrets
