@@ -2,19 +2,23 @@
 
 add_newline = true
 
-format = '''$username
-$directory $git_branch$git_commit $git_status
-$python
+format = '''$username $hostname $fill $time
+$git_branch$git_commit $git_status$python$nodejs
+$directory
 $character
 '''
 
+
 right_format = '''
-$time
 '''
 
 scan_timeout = 30
 
 palette = 'colors'
+
+[fill]
+symbol = ' '
+style = 'bold white'
 
 [palettes.colors]
 
@@ -29,6 +33,11 @@ style_user = 'bold blue'
 format = '[  $user]($style)'
 show_always = true
 disabled = false
+
+[hostname]
+ssh_only = false
+disabled = false
+format = '[󰌢 $ssh_symbol$hostname]($style)'
 
 [directory]
 style = 'bold red'
@@ -46,13 +55,13 @@ disabled = false
 
 [git_branch]
 always_show_remote = true
-format = "\n[ $symbol $branch(:$remote_branch)]($style)"
+format = " [$symbol $branch(:$remote_branch)]($style)"
 style = 'bold blue'
 symbol = ''
 disabled = false
 
 [git_status]
-format = '\[$untracked$modified$staged$renamed$deleted$ahead_behind$stashed$conflicted\]'
+format = '\[$untracked$modified$staged$renamed$deleted$ahead_behind$stashed$conflicted\] '
 untracked = '[U:$count](bold white)'
 modified = '[ M:$count ](bold green)'
 staged = '[ S:$count ](bold yellow)'
@@ -76,5 +85,9 @@ use_12hr = true
 disabled = false
 
 [python]
-format = ' [ Python ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) | '
+format = '[ Python ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+disabled = false
+
+[nodejs]
+format = '[ NodeJS (${version})]($style)'
 disabled = false
